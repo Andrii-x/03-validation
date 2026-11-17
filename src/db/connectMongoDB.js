@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export const initMongoConnection = async () => {
+export const connectMongoDB = async () => {
   const { MONGO_URL } = process.env;
 
   if (!MONGO_URL) {

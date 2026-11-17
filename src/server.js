@@ -1,11 +1,11 @@
 import 'dotenv/config';
-import app from './src/app.js';
-import { initMongoConnection } from './src/db/initMongoConnection.js';
+import app from './app.js';
+import { connectMongoDB } from './db/connectMongoDB.js';
 
 const port = Number(process.env.PORT) || 3030;
 
 try {
-  await initMongoConnection();
+  await connectMongoDB();
   app.listen(port, () => {
     console.info(`Server is running on port ${port}`);
   });

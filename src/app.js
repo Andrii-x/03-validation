@@ -1,22 +1,19 @@
 import express from 'express';
 import cors from 'cors';
-import createError from 'http-errors';
 import { errors as celebrateErrors } from 'celebrate';
+import { errorHandler } from './middleware/errorHandler.js';
+import { logger } from './middleware/logger.js';
+import { notFoundHandler } from './middleware/notFoundHandler.js';
 import notesRouter from './routes/notesRoutes.js';
 
 const app = express();
 
+app.use(logger);
 app.use(cors());
 app.use(express.json());
 app.use('/notes', notesRouter);
-app.use((req, res, next) => next(createError(404, 'Route not found')));
+app.use(notFoundHandler);
 app.use(celebrateErrors());
-app.use((error, req, res, next) => {
-  const status = error.status ?? error.statusCode ?? 500;
-  res.status(status).json({
-    status,
-    message: status === 500 ? 'Internal Server Error' : error.message,
-  });
-});
+app.use(errorHandler);
 
 export default app;
