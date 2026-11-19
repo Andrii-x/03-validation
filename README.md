@@ -6,7 +6,7 @@ tag and text, pagination, and request validation with Celebrate.
 ## Run locally
 
 1. Copy `.env.example` to `.env` and set `MONGO_URL` to a reachable MongoDB
-	 connection string. `PORT` defaults to `3030`.
+	connection string. `PORT` defaults to `3000`.
 2. Install dependencies with `npm install`.
 3. Start the server with `npm run dev` or `npm start`.
 
