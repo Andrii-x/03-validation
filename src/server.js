@@ -14,7 +14,7 @@ const port = Number(process.env.PORT) || 3000;
 app.use(logger);
 app.use(cors());
 app.use(express.json());
-app.use('/notes', notesRouter);
+app.use(notesRouter);
 app.use(notFoundHandler);
 app.use(celebrateErrors());
 app.use(errorHandler);
